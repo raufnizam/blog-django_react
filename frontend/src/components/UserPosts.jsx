@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const UserPosts = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -52,14 +53,11 @@ const UserPosts = () => {
       </div>
     );
   }
+
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-bold mb-6 text-center">Your Blog Posts</h1>
-      {loading ? (
-        <p className="text-gray-700 text-lg text-center">Loading posts...</p>
-      ) : message ? (
-        <p className="text-red-500 text-lg text-center">{message}</p>
-      ) : userPosts.length > 0 ? (
+      {userPosts.length > 0 ? (
         <ul className="space-y-4">
           {userPosts.map((post) => (
             <li
@@ -71,6 +69,14 @@ const UserPosts = () => {
               <p className="text-sm text-gray-500">
                 Posted on {new Date(post.created_at).toLocaleDateString()}
               </p>
+              <div className="mt-4">
+                <Link
+                  to={`/posts/${post.id}`}
+                  className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                >
+                  View Post
+                </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -79,7 +85,6 @@ const UserPosts = () => {
       )}
     </div>
   );
-  
 };
 
 export default UserPosts;

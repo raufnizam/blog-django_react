@@ -17,10 +17,22 @@ class PostListCreateAPIView(generics.ListCreateAPIView):
             print(f"Error while saving the post: {e}")  # Log error details
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-
-    
     def get_queryset(self):
         qs = super().get_queryset()
         if not self.request.user.is_staff:
             qs = qs.filter(author=self.request.user)
         return qs
+    
+    
+class PostRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if not self.request.user.is_staff:
+            qs = qs.filter(author=self.request.user)
+        return qs    
+
+    
