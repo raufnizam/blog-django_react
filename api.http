@@ -1,0 +1,25 @@
+GET http://localhost:8000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDQ2NjU4LCJpYXQiOjE3MzU0NDE4NTgsImp0aSI6ImY0ZTU4YmQ3NTIyZTRjNTBhNWFiZDRlNzcxOWVmYmUyIiwidXNlcl9pZCI6Mn0.Y6wQEfV1e1w1lAAZYEasiOnxi6NdTt1PtVmItT9GA4w
+
+
+
+###
+POST http://localhost:8000/api/token/
+Content-Type:  application/json
+
+{
+    "username": "admin",
+    "password": "admin@123"
+}
+
+
+###
+POST  http://localhost:8000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDQ2NjU4LCJpYXQiOjE3MzU0NDE4NTgsImp0aSI6ImY0ZTU4YmQ3NTIyZTRjNTBhNWFiZDRlNzcxOWVmYmUyIiwidXNlcl9pZCI6Mn0.Y6wQEfV1e1w1lAAZYEasiOnxi6NdTt1PtVmItT9GA4w
+Content-Type: application/json
+
+ {
+    "title": "http test",
+    "snippet": "test",
+    "description": "test"
+}
